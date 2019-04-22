@@ -1,9 +1,5 @@
 package io.axoniq.demo.dep2;
 
-import org.axonframework.common.jpa.EntityManagerProvider;
-import org.axonframework.eventhandling.tokenstore.TokenStore;
-import org.axonframework.eventhandling.tokenstore.jpa.JpaTokenStore;
-import org.axonframework.serialization.Serializer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.ApplicationRunner;
@@ -30,13 +26,4 @@ public class DistributedEventProcessingApp2 {
             while(true) ;
         };
     }
-
-    @Bean
-    public TokenStore tokenStore(EntityManagerProvider entityManagerProvider, Serializer serializer) {
-        return JpaTokenStore.builder()
-                            .entityManagerProvider(entityManagerProvider)
-                            .serializer(serializer)
-                            .build();
-    }
-
 }
