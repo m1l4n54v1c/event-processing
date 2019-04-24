@@ -19,6 +19,6 @@ public class DummyEventHandler {
     @EventHandler
     public void on(DummyAggregateCreatedEvent evt) throws Exception {
         LOGGER.info("Handling {}... {}. ", evt, Thread.currentThread());
-        throw new Exception("oops");
+//        throw new Exception("oops");
     }
 }

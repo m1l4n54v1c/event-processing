@@ -1,0 +1,11 @@
+### create dummy aggregate
+POST http://localhost:8080/create
+
+{{id}}
+
+### echo
+POST http://localhost:8080/echo/{{id}}
+
+Hi from SEP!
+
+###
