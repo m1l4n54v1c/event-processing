@@ -12,11 +12,11 @@ import org.springframework.web.bind.annotation.RestController;
  * @author Milan Savic
  */
 @RestController
-public class SubscribingEventProcessingWeb {
+public class SubscribingEventProcessingController {
 
     private final CommandGateway commandGateway;
 
-    public SubscribingEventProcessingWeb(CommandGateway commandGateway) {
+    public SubscribingEventProcessingController(CommandGateway commandGateway) {
         this.commandGateway = commandGateway;
     }
 

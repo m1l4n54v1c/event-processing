@@ -17,13 +17,13 @@ import java.util.concurrent.Future;
  * @author Milan Savic
  */
 @RestController
-public class TrackingEventProcessingWeb {
+public class TrackingEventProcessingController {
 
     private final CommandGateway commandGateway;
     private final EventProcessingConfiguration eventProcessingConfiguration;
 
-    public TrackingEventProcessingWeb(CommandGateway commandGateway,
-                                      EventProcessingConfiguration eventProcessingConfiguration) {
+    public TrackingEventProcessingController(CommandGateway commandGateway,
+                                             EventProcessingConfiguration eventProcessingConfiguration) {
         this.commandGateway = commandGateway;
         this.eventProcessingConfiguration = eventProcessingConfiguration;
     }
