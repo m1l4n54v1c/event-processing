@@ -1,4 +1,4 @@
-package io.axoniq.demo.pep;
+package io.axoniq.demo.dep1;
 
 import org.axonframework.config.EventProcessingConfiguration;
 import org.axonframework.eventhandling.EventBus;
@@ -17,13 +17,13 @@ import java.util.UUID;
  * @author Milan Savic
  */
 @RestController
-public class ParallelEventProcessingController {
+public class DistributedEventProcessingController {
 
     private final EventBus eventBus;
     private final EventProcessingConfiguration eventProcessingConfiguration;
 
-    public ParallelEventProcessingController(EventBus eventBus,
-                                             EventProcessingConfiguration eventProcessingConfiguration) {
+    public DistributedEventProcessingController(EventBus eventBus,
+                                                EventProcessingConfiguration eventProcessingConfiguration) {
         this.eventBus = eventBus;
         this.eventProcessingConfiguration = eventProcessingConfiguration;
     }
@@ -31,14 +31,14 @@ public class ParallelEventProcessingController {
     @PostMapping("/run/{parallelism}")
     public void run(@PathVariable int parallelism) {
         for (int i = 0; i < parallelism; i++) {
-            String eventId = i + "-" + UUID.randomUUID().toString();
-            eventBus.publish(GenericEventMessage.asEventMessage(new MyEvent(eventId)));
+            String event = i + "-" + UUID.randomUUID().toString();
+            eventBus.publish(GenericEventMessage.asEventMessage(event));
         }
     }
 
     @GetMapping("/status")
     public Map<Integer, EventTrackerStatus> status() {
-        return eventProcessingConfiguration.eventProcessor("pep", TrackingEventProcessor.class)
+        return eventProcessingConfiguration.eventProcessor("dep", TrackingEventProcessor.class)
                                            .map(TrackingEventProcessor::processingStatus)
                                            .orElseThrow(IllegalStateException::new);
     }
