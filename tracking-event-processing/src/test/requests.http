@@ -1,0 +1,10 @@
+### create dummy aggregate
+POST http://localhost:8080/create
+
+### replay
+POST http://localhost:8080/replay
+
+### status
+GET http://localhost:8080/status
+
+###
