@@ -1,7 +1,9 @@
 ### create dummy aggregate
 POST http://localhost:8080/create
 
-{{id}}
+> {%
+client.global.set("id", response.body)
+%}
 
 ### echo
 POST http://localhost:8080/echo/{{id}}

@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.UUID;
+
 /**
  * @author Milan Savic
  */
@@ -21,8 +23,8 @@ public class SubscribingEventProcessingController {
     }
 
     @PostMapping("/create")
-    public void create(@RequestBody String id) {
-        commandGateway.sendAndWait(new CreateDummyAggregateCommand(id));
+    public String create() {
+        return commandGateway.sendAndWait(new CreateDummyAggregateCommand(UUID.randomUUID().toString()));
     }
 
     @PostMapping("/echo/{id}")
